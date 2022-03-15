@@ -1,0 +1,1 @@
+export { setRateData } from './exchangeRates';

@@ -1,0 +1,1 @@
+export { exchangeRatesReducer } from './exchangeRates';
