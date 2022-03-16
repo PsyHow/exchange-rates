@@ -1,10 +1,11 @@
 import { ReactElement } from 'react';
 
+import style from './App.module.scss';
+
 import { ValuteList } from 'components/ValuteList/ValuteList';
-import './App.css';
 
 const App = (): ReactElement => (
-  <div className="App">
+  <div className={style.app}>
     <ValuteList />
   </div>
 );

@@ -1,0 +1,29 @@
+.tableWrapper {
+    margin-top: 100px;
+    width: 70%;
+    height: 70vh;
+    overflow-y: auto;
+    .table {
+        width: 100%;
+        text-align: center;
+        border: 2px solid black;
+
+        & thead {
+            background-color: #8e7dff;
+            height: 40px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        & tbody tr td {
+            padding: 0;
+            height: 35px;
+            font-size: 20px;
+            font-weight: 300;
+        }
+
+        & tbody tr:nth-child(odd) {
+            background-color: #e1e8ed;
+        }
+    }
+}
