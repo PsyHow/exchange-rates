@@ -29,9 +29,12 @@ export const ValuteList = (): ReactElement => {
         </thead>
         <tbody>
           {valuteList.Valute &&
-            Object.entries(valuteList.Valute).map(([key, valute]) => (
-              <tr key={key}>
-                <td>{key}</td>
+            Object.entries(valuteList.Valute).map(([valuteName, valute]) => (
+              <tr key={valute.ID} className={style.tooltip}>
+                <td>
+                  {valuteName}
+                  <div className={style.tooltipText}>{valute.Name}</div>
+                </td>
                 <td>{`${valute.Value} ₽`}</td>
                 <td>{currentDiffHandle(valute.Value, valute.Previous)}</td>
               </tr>
