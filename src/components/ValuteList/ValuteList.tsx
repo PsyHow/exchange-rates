@@ -1,17 +1,23 @@
-import { ReactElement, useEffect } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
 import style from './style/ValuteList.module.scss';
 
-import { currentDiffHandle } from 'const';
-import { selectValuteList } from 'selectors/valuteList';
+import { Modal } from 'components/common/Modal';
+import { PrevDaysRates } from 'components/PrevDaysRates';
+import { relDiff } from 'const';
+import { selectPrevExchangeData, selectValuteList } from 'selectors/valuteList';
+import { setCurrentValute } from 'store/actions';
 import { fetchExchangeRates } from 'store/middlewares';
 
 export const ValuteList = (): ReactElement => {
   const dispatch = useDispatch();
 
   const valuteList = useSelector(selectValuteList);
+  const prevData = useSelector(selectPrevExchangeData);
+
+  const [openModal, setOpenModal] = useState<boolean>(false);
 
   useEffect(() => {
     dispatch(fetchExchangeRates());
@@ -29,18 +35,27 @@ export const ValuteList = (): ReactElement => {
         </thead>
         <tbody>
           {valuteList.Valute &&
-            Object.entries(valuteList.Valute).map(([valuteName, valute]) => (
-              <tr key={valute.ID} className={style.tooltip}>
-                <td>
-                  {valuteName}
-                  <div className={style.tooltipText}>{valute.Name}</div>
-                </td>
-                <td>{`${valute.Value} ₽`}</td>
-                <td>{currentDiffHandle(valute.Value, valute.Previous)}</td>
-              </tr>
-            ))}
+            Object.entries(valuteList.Valute).map(([valuteName, valute]) => {
+              const handleSelectValue = (): void => {
+                setOpenModal(!openModal);
+                dispatch(setCurrentValute(valuteName));
+              };
+              return (
+                <tr key={valute.ID} className={style.tooltip} onClick={handleSelectValue}>
+                  <td>
+                    {valuteName}
+                    <div className={style.tooltipText}>{valute.Name}</div>
+                  </td>
+                  <td>{`${valute.Value} ₽`}</td>
+                  <td>{relDiff(valute.Value, valute.Previous)}</td>
+                </tr>
+              );
+            })}
         </tbody>
       </table>
+      <Modal active={openModal} setActive={setOpenModal}>
+        {prevData.length >= 10 ? <PrevDaysRates /> : <span>Loading</span>}
+      </Modal>
     </div>
   );
 };

@@ -1,1 +1,7 @@
-export { setRateData } from './exchangeRates';
+export {
+  setRateData,
+  setPrevExchangeData,
+  setPrevUrl,
+  setCurrentValute,
+  setPrevDate,
+} from './exchangeRates';

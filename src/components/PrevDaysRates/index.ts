@@ -1,0 +1,1 @@
+export { PrevDaysRates } from './PrevDaysRates';
