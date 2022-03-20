@@ -1,6 +1,6 @@
 {
   "name": "exchange-rates",
-  "homepage": "https://psyhow.github.io/exchangeRates/",
+  "homepage": "https://psyhow.github.io/exchange-rates/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
