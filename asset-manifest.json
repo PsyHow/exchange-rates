@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/exchangeRates/static/css/main.139e2615.css",
-    "main.js": "/exchangeRates/static/js/main.e538213f.js",
-    "static/js/787.e7470584.chunk.js": "/exchangeRates/static/js/787.e7470584.chunk.js",
-    "index.html": "/exchangeRates/index.html",
-    "main.139e2615.css.map": "/exchangeRates/static/css/main.139e2615.css.map",
-    "main.e538213f.js.map": "/exchangeRates/static/js/main.e538213f.js.map",
-    "787.e7470584.chunk.js.map": "/exchangeRates/static/js/787.e7470584.chunk.js.map"
+    "main.css": "/exchange-rates/static/css/main.139e2615.css",
+    "main.js": "/exchange-rates/static/js/main.11befc75.js",
+    "static/js/787.e7470584.chunk.js": "/exchange-rates/static/js/787.e7470584.chunk.js",
+    "index.html": "/exchange-rates/index.html",
+    "main.139e2615.css.map": "/exchange-rates/static/css/main.139e2615.css.map",
+    "main.11befc75.js.map": "/exchange-rates/static/js/main.11befc75.js.map",
+    "787.e7470584.chunk.js.map": "/exchange-rates/static/js/787.e7470584.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.139e2615.css",
-    "static/js/main.e538213f.js"
+    "static/js/main.11befc75.js"
   ]
 }
