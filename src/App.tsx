@@ -11,6 +11,7 @@ import { fetchPrevExchangeRates } from 'store/middlewares/exchangeRates';
 
 export const App = (): ReactElement => {
   const dispatch = useDispatch();
+
   const url = useSelector(selectPervUrl);
   const date = useSelector(selectPervDate);
 

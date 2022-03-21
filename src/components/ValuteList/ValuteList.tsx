@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import style from './style/ValuteList.module.scss';
 
-import { Modal } from 'components/common/Modal';
+import { Modal } from 'components/common';
 import { PrevDaysRates } from 'components/PrevDaysRates';
 import { relDiff } from 'const';
 import { selectPrevExchangeData, selectValuteList } from 'selectors/valuteList';
@@ -54,7 +54,11 @@ export const ValuteList = (): ReactElement => {
         </tbody>
       </table>
       <Modal active={openModal} setActive={setOpenModal}>
-        {prevData.length >= 10 ? <PrevDaysRates /> : <span>Loading</span>}
+        {prevData.length >= 10 ? (
+          <PrevDaysRates />
+        ) : (
+          <span>Получаем данные с сервера . . .</span>
+        )}
       </Modal>
     </div>
   );
