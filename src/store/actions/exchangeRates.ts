@@ -29,3 +29,9 @@ export const setCurrentValute = (valute: string) =>
     type: 'SET_CURRENT_VALUTE',
     valute,
   } as const);
+
+export const isLoading = (isLoad: boolean) =>
+  ({
+    type: 'SET_IS_LOADING',
+    isLoad,
+  } as const);

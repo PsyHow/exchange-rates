@@ -4,4 +4,5 @@ export {
   setPrevUrl,
   setCurrentValute,
   setPrevDate,
+  isLoading,
 } from './exchangeRates';

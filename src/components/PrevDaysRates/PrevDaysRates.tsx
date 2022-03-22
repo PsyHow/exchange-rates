@@ -11,6 +11,16 @@ export const PrevDaysRates = (): ReactElement => {
   const currentValute = useSelector(selectCurrentValute);
   const prevData = useSelector(selectPrevExchangeData);
 
+  if (prevData.length < 10) {
+    return (
+      <div className={style.wrapper}>
+        <span>Получаем данные с сервера . . .</span>
+      </div>
+    );
+  }
+
+  console.log('rerender last rates data');
+
   return (
     <div className={style.wrapper}>
       <h3>{currentValute}</h3>

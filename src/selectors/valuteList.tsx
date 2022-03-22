@@ -15,3 +15,6 @@ export const selectPrevExchangeData = (state: AppStoreType): ExchangeResponseDat
 
 export const selectCurrentValute = (state: AppStoreType): string =>
   state.exchangeRatesReducer.currentValute;
+
+export const selectIsLoading = (state: AppStoreType): boolean =>
+  state.exchangeRatesReducer.isLoading;

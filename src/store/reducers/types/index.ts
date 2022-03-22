@@ -4,6 +4,7 @@ import {
   setPrevUrl,
   setRateData,
   setCurrentValute,
+  isLoading,
 } from 'store/actions';
 
 export type ExchangeRatesType =
@@ -11,4 +12,5 @@ export type ExchangeRatesType =
   | ReturnType<typeof setPrevExchangeData>
   | ReturnType<typeof setPrevDate>
   | ReturnType<typeof setCurrentValute>
+  | ReturnType<typeof isLoading>
   | ReturnType<typeof setPrevUrl>;

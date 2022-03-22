@@ -1,1 +1,1 @@
-export { fetchExchangeRates } from './exchangeRates';
+export { fetchExchangeRates, fetchPrevExchangeRates } from './exchangeRates';

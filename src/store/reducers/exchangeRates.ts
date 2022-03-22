@@ -8,6 +8,7 @@ const initialState = {
   prevUrl: '',
   prevDate: '',
   currentValute: 'AUD',
+  isLoading: false,
 };
 
 type InitialStateType = typeof initialState;
@@ -25,6 +26,8 @@ export const exchangeRatesReducer = (
       return { ...state, prevDate: action.date };
     case 'SET_PREV_RATES_DATA':
       return { ...state, prevData: [...state.prevData, action.data] };
+    case 'SET_IS_LOADING':
+      return { ...state, isLoading: action.isLoad };
     case 'SET_CURRENT_VALUTE':
       return {
         ...state,
