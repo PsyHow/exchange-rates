@@ -11,6 +11,16 @@ export const PrevDaysRates = (): ReactElement => {
   const currentValute = useSelector(selectCurrentValute);
   const prevData = useSelector(selectPrevExchangeData);
 
+  const mappedPrevData = prevData.map(data => {
+    const date = moment(data.Date);
+    return (
+      <tr key={data.Date}>
+        <td>{date.format('DD/MM/YYYY')}</td>
+        <td>{data.Valute[currentValute].Value}</td>
+      </tr>
+    );
+  });
+
   if (prevData.length < 10) {
     return (
       <div className={style.wrapper}>
@@ -18,8 +28,6 @@ export const PrevDaysRates = (): ReactElement => {
       </div>
     );
   }
-
-  console.log('rerender last rates data');
 
   return (
     <div className={style.wrapper}>
@@ -31,17 +39,7 @@ export const PrevDaysRates = (): ReactElement => {
             <td>Стоимость</td>
           </tr>
         </thead>
-        <tbody>
-          {prevData.slice(0, 10).map(data => {
-            const date = moment(data.Date);
-            return (
-              <tr key={data.Date}>
-                <td>{date.format('DD/MM/YYYY')}</td>
-                <td>{data.Valute[currentValute].Value}</td>
-              </tr>
-            );
-          })}
-        </tbody>
+        <tbody>{mappedPrevData}</tbody>
       </table>
     </div>
   );

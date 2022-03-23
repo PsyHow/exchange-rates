@@ -1,26 +1,32 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { Dispatch, FC, memo, SetStateAction } from 'react';
+import { FC, memo } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
 
 import style from './style/Modal.module.scss';
 
-interface ModalProps {
-  active: boolean;
-  setActive: Dispatch<SetStateAction<boolean>>;
-}
+import { selectIsModalOpen } from 'selectors/app';
+import { setIsModalOpen } from 'store/actions/app';
 
-export const Modal: FC<ModalProps> = memo(({ active, setActive, children }) => {
+export const Modal: FC = memo(({ children }) => {
+  const dispatch = useDispatch();
+
+  const isModalOpen = useSelector(selectIsModalOpen);
+
   const handleCloseClick = (): void => {
-    setActive(false);
+    dispatch(setIsModalOpen(false));
   };
 
   return (
     <div
-      className={active ? `${style.modal} ${style.modalActive}` : style.modal}
+      className={isModalOpen ? `${style.modal} ${style.modalActive}` : style.modal}
       onClick={handleCloseClick}
     >
       <div
-        className={active ? `${style.content} ${style.contentActive}` : style.content}
+        className={
+          isModalOpen ? `${style.content} ${style.contentActive}` : style.content
+        }
         onClick={event => event.stopPropagation()}
       >
         {children}

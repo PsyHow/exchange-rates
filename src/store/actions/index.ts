@@ -3,6 +3,6 @@ export {
   setPrevExchangeData,
   setPrevUrl,
   setCurrentValute,
-  setPrevDate,
-  isLoading,
 } from './exchangeRates';
+
+export { isLoading, setIsModalOpen } from './app';

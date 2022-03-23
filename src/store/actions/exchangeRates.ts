@@ -1,37 +1,25 @@
 import { ExchangeResponseData } from 'api/getExchangeRates/types';
 
-export const setRateData = (data: ExchangeResponseData) =>
+export const setRateData = (payload: ExchangeResponseData) =>
   ({
     type: 'SET_RATE_DATA',
-    data,
+    payload,
   } as const);
 
-export const setPrevExchangeData = (data: ExchangeResponseData) =>
+export const setPrevExchangeData = (payload: ExchangeResponseData) =>
   ({
     type: 'SET_PREV_RATES_DATA',
-    data,
+    payload,
   } as const);
 
-export const setPrevUrl = (url: string) =>
+export const setPrevUrl = (payload: string) =>
   ({
     type: 'SET_PREV_URL',
-    url,
+    payload,
   } as const);
 
-export const setPrevDate = (date: string) =>
-  ({
-    type: 'SET_PREV_DATE',
-    date,
-  } as const);
-
-export const setCurrentValute = (valute: string) =>
+export const setCurrentValute = (payload: string) =>
   ({
     type: 'SET_CURRENT_VALUTE',
-    valute,
-  } as const);
-
-export const isLoading = (isLoad: boolean) =>
-  ({
-    type: 'SET_IS_LOADING',
-    isLoad,
+    payload,
   } as const);

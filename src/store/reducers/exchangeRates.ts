@@ -1,6 +1,5 @@
-import { ExchangeRatesType } from './types';
-
 import { ExchangeResponseData } from 'api/getExchangeRates/types';
+import { ExchangeRatesType } from 'store/reducers/types';
 
 const initialState = {
   valuteList: {} as ExchangeResponseData,
@@ -8,7 +7,6 @@ const initialState = {
   prevUrl: '',
   prevDate: '',
   currentValute: 'AUD',
-  isLoading: false,
 };
 
 type InitialStateType = typeof initialState;
@@ -19,20 +17,20 @@ export const exchangeRatesReducer = (
 ): InitialStateType => {
   switch (action.type) {
     case 'SET_RATE_DATA':
-      return { ...state, valuteList: action.data };
+      return { ...state, valuteList: action.payload };
+
     case 'SET_PREV_URL':
-      return { ...state, prevUrl: action.url };
-    case 'SET_PREV_DATE':
-      return { ...state, prevDate: action.date };
+      return { ...state, prevUrl: action.payload };
+
     case 'SET_PREV_RATES_DATA':
-      return { ...state, prevData: [...state.prevData, action.data] };
-    case 'SET_IS_LOADING':
-      return { ...state, isLoading: action.isLoad };
+      return { ...state, prevData: [...state.prevData, action.payload] };
+
     case 'SET_CURRENT_VALUTE':
       return {
         ...state,
-        currentValute: action.valute,
+        currentValute: action.payload,
       };
+
     default:
       return state;
   }

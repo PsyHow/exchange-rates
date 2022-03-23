@@ -1,5 +1,5 @@
 import { ExchangeResponseData } from 'api/getExchangeRates/types';
-import { AppStoreType } from 'store/store';
+import { AppStoreType } from 'store';
 
 export const selectValuteList = (state: AppStoreType): ExchangeResponseData =>
   state.exchangeRatesReducer.valuteList;
@@ -15,6 +15,3 @@ export const selectPrevExchangeData = (state: AppStoreType): ExchangeResponseDat
 
 export const selectCurrentValute = (state: AppStoreType): string =>
   state.exchangeRatesReducer.currentValute;
-
-export const selectIsLoading = (state: AppStoreType): boolean =>
-  state.exchangeRatesReducer.isLoading;

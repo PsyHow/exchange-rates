@@ -1,6 +1,5 @@
-import { ExchangeResponseData } from './types';
-
 import { instance } from 'api/apiConfig';
+import { ExchangeResponseData } from 'api/getExchangeRates/types';
 
 export const ratesApi = {
   getExchangeRates() {

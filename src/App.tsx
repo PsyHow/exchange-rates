@@ -1,36 +1,29 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement, useCallback, useEffect, useState } from 'react';
 
-import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
 
 import style from './App.module.scss';
 
 import { ValuteList } from 'components/ValuteList';
+import { selectIsLoading } from 'selectors/app';
 import {
-  selectIsLoading,
-  selectPervDate,
   selectPervUrl,
   selectPrevExchangeData,
+  selectValuteList,
 } from 'selectors/valuteList';
 import { fetchExchangeRates, fetchPrevExchangeRates } from 'store/middlewares';
-
-// const fetchPrevValuteHandle = async (callback: any) => {
-//   const result = await callback();
-//   console.log(result);
-// };
 
 export const App = (): ReactElement => {
   const dispatch = useDispatch();
 
   const url = useSelector(selectPervUrl);
-  const date = useSelector(selectPervDate);
   const isLoading = useSelector(selectIsLoading);
   const prevData = useSelector(selectPrevExchangeData);
-
-  const subDate = moment().subtract(20, 'days').format();
-  const formatUrl = url && url.substring(23);
+  const valuteList = useSelector(selectValuteList);
 
   const [clicked, setClicked] = useState(false);
+
+  const formatUrl = url.substring(23);
 
   useEffect(() => {
     dispatch(fetchExchangeRates());
@@ -44,13 +37,13 @@ export const App = (): ReactElement => {
     }
   }, [clicked, prevData, isLoading]);
 
-  const handleValuteClick = (): void => {
+  const handleValuteClick = useCallback((): void => {
     setClicked(true);
-  };
+  }, []);
 
   return (
     <div className={style.app}>
-      <ValuteList onClick={handleValuteClick} />
+      <ValuteList valuteList={valuteList} onClick={handleValuteClick} />
     </div>
   );
 };

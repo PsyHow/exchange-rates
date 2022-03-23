@@ -1,31 +1,23 @@
-import { FC, ReactElement, useState } from 'react';
+import { FC, memo } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import style from './style/ValuteList.module.scss';
 
 import { Modal } from 'components/common';
 import { PrevDaysRates } from 'components/PrevDaysRates';
+import { ValuteListProps } from 'components/ValuteList/types';
 import { relDiff } from 'const';
-import { selectPrevExchangeData, selectValuteList } from 'selectors/valuteList';
-import { setCurrentValute } from 'store/actions';
+import { setIsModalOpen, setCurrentValute } from 'store/actions';
 
-type ValuteListProps = {
-  onClick: () => void;
-};
-
-export const ValuteList: FC<ValuteListProps> = ({ onClick }) => {
+export const ValuteList: FC<ValuteListProps> = memo(({ onClick, valuteList }) => {
   const dispatch = useDispatch();
 
-  const valuteList = useSelector(selectValuteList);
-
-  const [openModal, setOpenModal] = useState<boolean>(false);
-
-  const mappedValute = valuteList.Valute
+  const mappedValuteList = valuteList.Valute
     ? Object.entries(valuteList.Valute).map(([valuteName, valute]) => {
         const handleSelectValue = (): void => {
           onClick();
-          setOpenModal(true);
+          dispatch(setIsModalOpen(true));
           dispatch(setCurrentValute(valuteName));
         };
 
@@ -52,11 +44,11 @@ export const ValuteList: FC<ValuteListProps> = ({ onClick }) => {
             <td>Разница</td>
           </tr>
         </thead>
-        <tbody>{mappedValute}</tbody>
+        <tbody>{mappedValuteList}</tbody>
       </table>
-      <Modal active={openModal} setActive={setOpenModal}>
+      <Modal>
         <PrevDaysRates />
       </Modal>
     </div>
   );
-};
+});

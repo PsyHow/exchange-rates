@@ -6,8 +6,6 @@ export interface ExchangeResponseData {
   Valute: { [key: string]: Valute };
 }
 
-export interface ValuteName {}
-
 export interface Valute {
   ID: string;
   NumCode: string;
